@@ -34,7 +34,7 @@
     }
     a:focus-visible, button:focus-visible { border-radius: 6px; }
 
-    /* Scroll offset for sticky nav — prevents headings from hiding under it */
+    /* Scroll offset for sticky nav */
     [id] { scroll-margin-top: 80px; }
     #main-content { scroll-margin-top: 0; }
     #main-content:focus { outline: none; }
@@ -64,13 +64,38 @@
     .nav-toggle {
       display: none; background: none; border: none; font-size: 1.35rem;
       cursor: pointer; color: #1a1a2e;
-      /* Large tap target via padding + negative margin trick */
       padding: 11px; margin: -11px;
       line-height: 1; border-radius: 8px;
       transition: background 0.15s;
     }
     .nav-toggle:hover { background: #f0f0f0; }
     .nav-toggle:active { background: #e0e0e0; }
+
+    /* Nav end (lang toggle + hamburger) */
+    .nav-end { display: flex; align-items: center; gap: 12px; }
+
+    /* Language toggle pill */
+    .lang-toggle {
+      display: flex; align-items: center;
+      background: #f0f7f7; border: 1.5px solid #b0d4d4;
+      border-radius: 20px; padding: 3px;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      padding: 3px 10px; border-radius: 16px;
+      color: #888; font-size: 0.78rem; font-weight: 700;
+      font-family: inherit; line-height: 1.4;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-btn.active { background: #0d6e6e; color: #fff; }
+    .lang-btn:focus-visible { outline: 2px solid #0d6e6e; outline-offset: 1px; border-radius: 14px; }
+
+    /* Desktop: ul before nav-end */
+    @media (min-width: 721px) {
+      nav .container { justify-content: flex-start; }
+      nav ul { margin-left: auto; }
+      .nav-end { margin-left: 16px; }
+    }
 
     /* Hero */
     .hero {
@@ -399,6 +424,7 @@
         margin: 10px 24px 6px; text-align: center; border-radius: 8px;
         min-height: 48px; justify-content: center;
       }
+      .lang-btn { font-size: 0.74rem; padding: 3px 8px; }
     }
 
     @media (max-width: 400px) {
@@ -410,98 +436,104 @@
 </head>
 <body>
 
-  <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+  <a class="skip-link" href="#main-content" data-i18n="skip-link">Bỏ qua điều hướng</a>
 
-  <nav role="navigation" aria-label="Điều hướng chính">
+  <nav role="navigation" aria-label="Điều hướng chính" data-i18n-aria="nav-aria">
     <div class="container">
-      <a href="#" class="logo" aria-label="Viet Kế Thuế — Trang chủ">Viet <span>Kế Thuế</span></a>
-      <button class="nav-toggle" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="nav-menu">☰</button>
+      <a href="#" class="logo" aria-label="Viet Kế Thuế — Trang chủ" data-i18n-aria="logo-aria">Viet <span>Kế Thuế</span></a>
+      <div class="nav-end">
+        <div class="lang-toggle" role="group" aria-label="Language / Ngôn ngữ">
+          <button class="lang-btn active" data-lang="vi" aria-pressed="true">VN</button>
+          <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="nav-toggle" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="nav-menu">☰</button>
+      </div>
       <ul id="nav-menu">
-        <li><a href="#services">Dịch vụ</a></li>
-        <li><a href="#layers">Ba Tầng</a></li>
-        <li><a href="#pricing">Bảng giá</a></li>
-        <li><a href="#why">Tại sao</a></li>
-        <li><a href="#contact" class="nav-cta">Liên hệ</a></li>
+        <li><a href="#services" data-i18n="nav-services">Dịch vụ</a></li>
+        <li><a href="#layers" data-i18n="nav-layers">Ba Tầng</a></li>
+        <li><a href="#pricing" data-i18n="nav-pricing">Bảng giá</a></li>
+        <li><a href="#why" data-i18n="nav-why">Tại sao</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav-contact">Liên hệ</a></li>
       </ul>
     </div>
   </nav>
 
   <section class="hero" id="main-content" tabindex="-1">
     <div class="container">
-      <h1>Không chỉ là kế toán — Compliance Engine, Advisory Layer và Tech Platform trong một</h1>
-      <p>Viet Kế Thuế bảo vệ doanh nghiệp trên ba tầng: máy móc tự động không bỏ sót deadline, chuyên gia 30 năm xử lý phán đoán, và dashboard để bạn nhìn thấy số liệu real-time — không cần gọi hỏi.</p>
-      <div class="hero-stats" aria-label="Số liệu nổi bật">
+      <h1 data-i18n="hero-h1">Không chỉ là kế toán — Compliance Engine, Advisory Layer và Tech Platform trong một</h1>
+      <p data-i18n="hero-p">Viet Kế Thuế bảo vệ doanh nghiệp trên ba tầng: máy móc tự động không bỏ sót deadline, chuyên gia 30 năm xử lý phán đoán, và dashboard để bạn nhìn thấy số liệu real-time — không cần gọi hỏi.</p>
+      <div class="hero-stats" aria-label="Số liệu nổi bật" data-i18n-aria="stats-aria">
         <div class="hero-stat">
           <strong>200+</strong>
-          <span>Doanh nghiệp tin dùng</span>
+          <span data-i18n="hero-stat-1">Doanh nghiệp tin dùng</span>
         </div>
         <div class="hero-stat">
           <strong>30+</strong>
-          <span>Năm kinh nghiệm kế toán</span>
+          <span data-i18n="hero-stat-2">Năm kinh nghiệm kế toán</span>
         </div>
         <div class="hero-stat">
           <strong>100%</strong>
-          <span>Kê khai đúng hạn</span>
+          <span data-i18n="hero-stat-3">Kê khai đúng hạn</span>
         </div>
       </div>
-      <div class="hero-badges" aria-label="Ba tầng nền tảng">
-        <span>⚙️ Compliance Engine · MISA + TT 133/200/88</span>
-        <span>👨‍💼 Advisory Layer · Kế toán 30+ năm</span>
-        <span>📱 Tech Platform · Dashboard real-time</span>
+      <div class="hero-badges" aria-label="Ba tầng nền tảng" data-i18n-aria="badges-aria">
+        <span data-i18n="hero-badge-1">⚙️ Compliance Engine · MISA + TT 133/200/88</span>
+        <span data-i18n="hero-badge-2">👨‍💼 Advisory Layer · Kế toán 30+ năm</span>
+        <span data-i18n="hero-badge-3">📱 Tech Platform · Dashboard real-time</span>
       </div>
       <div class="hero-actions">
-        <a href="#contact" class="hero-cta">Đăng ký tư vấn miễn phí</a>
-        <a href="#layers" class="hero-secondary">Xem ba tầng hoạt động thế nào</a>
+        <a href="#contact" class="hero-cta" data-i18n="hero-cta">Đăng ký tư vấn miễn phí</a>
+        <a href="#layers" class="hero-secondary" data-i18n="hero-secondary">Xem ba tầng hoạt động thế nào</a>
       </div>
     </div>
   </section>
 
   <section id="services">
     <div class="container">
-      <h2>Dịch vụ trên ba tầng nền tảng</h2>
-      <p class="subtitle">Mỗi nghiệp vụ được phân công đúng tầng — máy làm phần máy, người làm phần người</p>
+      <h2 data-i18n="services-h2">Dịch vụ trên ba tầng nền tảng</h2>
+      <p class="subtitle" data-i18n="services-sub">Mỗi nghiệp vụ được phân công đúng tầng — máy làm phần máy, người làm phần người</p>
       <div class="services-grid">
 
         <div class="service-card">
           <span class="service-layer-tag tag-engine">Compliance Engine</span>
           <span class="icon" aria-hidden="true">📒</span>
-          <h3>Ghi sổ tự động</h3>
-          <p>MISA xử lý toàn bộ hạch toán: chứng từ mua vào — bán ra, tính giá vốn, khấu hao TSCĐ, bút toán kết chuyển cuối kỳ. Tự động phát hiện sai lệch trước khi ký sổ.</p>
+          <h3 data-i18n="svc1-h3">Ghi sổ tự động</h3>
+          <p data-i18n="svc1-p">MISA xử lý toàn bộ hạch toán: chứng từ mua vào — bán ra, tính giá vốn, khấu hao TSCĐ, bút toán kết chuyển cuối kỳ. Tự động phát hiện sai lệch trước khi ký sổ.</p>
         </div>
 
         <div class="service-card">
           <span class="service-layer-tag tag-engine">Compliance Engine</span>
           <span class="icon" aria-hidden="true">📊</span>
-          <h3>Kê khai &amp; nộp thuế</h3>
-          <p>Tờ khai GTGT, TNCN, TNDN, thuế môn bài được lập và nộp tự động qua cổng điện tử. Tuân thủ đầy đủ TT 133, TT 200, TT 88 — không trễ một ngày, không bị phạt một đồng.</p>
+          <h3 data-i18n="svc2-h3">Kê khai &amp; nộp thuế</h3>
+          <p data-i18n="svc2-p">Tờ khai GTGT, TNCN, TNDN, thuế môn bài được lập và nộp tự động qua cổng điện tử. Tuân thủ đầy đủ TT 133, TT 200, TT 88 — không trễ một ngày, không bị phạt một đồng.</p>
         </div>
 
         <div class="service-card">
           <span class="service-layer-tag tag-engine">Compliance Engine</span>
           <span class="icon" aria-hidden="true">🧾</span>
-          <h3>Hóa đơn điện tử</h3>
-          <p>Phát hành hóa đơn GTGT theo Nghị định 123, kết nối trực tiếp với TCT, tự động truyền mã xác thực. PDPL-compliant — dữ liệu được bảo vệ theo đúng luật.</p>
+          <h3 data-i18n="svc3-h3">Hóa đơn điện tử</h3>
+          <p data-i18n="svc3-p">Phát hành hóa đơn GTGT theo Nghị định 123, kết nối trực tiếp với TCT, tự động truyền mã xác thực. PDPL-compliant — dữ liệu được bảo vệ theo đúng luật.</p>
         </div>
 
         <div class="service-card">
           <span class="service-layer-tag tag-advisory">Advisory Layer</span>
           <span class="icon" aria-hidden="true">💼</span>
-          <h3>Tư vấn &amp; rà soát thuế</h3>
-          <p>Kế toán 30+ năm kinh nghiệm review mọi hồ sơ trước khi nộp. Phát hiện rủi ro thuế, giải đáp vướng mắc, soạn thảo hợp đồng và hỗ trợ quyết toán cuối năm.</p>
+          <h3 data-i18n="svc4-h3">Tư vấn &amp; rà soát thuế</h3>
+          <p data-i18n="svc4-p">Kế toán 30+ năm kinh nghiệm review mọi hồ sơ trước khi nộp. Phát hiện rủi ro thuế, giải đáp vướng mắc, soạn thảo hợp đồng và hỗ trợ quyết toán cuối năm.</p>
         </div>
 
         <div class="service-card">
           <span class="service-layer-tag tag-advisory">Advisory Layer</span>
           <span class="icon" aria-hidden="true">🏛️</span>
-          <h3>Đại diện &amp; tranh biện thuế</h3>
-          <p>Làm việc trực tiếp với cơ quan thuế thay mặt doanh nghiệp — giải trình, thanh tra, hoàn thuế, xử lý tranh chấp. AI lo phần thủ tục, chuyên gia lo phần phán đoán.</p>
+          <h3 data-i18n="svc5-h3">Đại diện &amp; tranh biện thuế</h3>
+          <p data-i18n="svc5-p">Làm việc trực tiếp với cơ quan thuế thay mặt doanh nghiệp — giải trình, thanh tra, hoàn thuế, xử lý tranh chấp. AI lo phần thủ tục, chuyên gia lo phần phán đoán.</p>
         </div>
 
         <div class="service-card">
           <span class="service-layer-tag tag-platform">Tech Platform</span>
           <span class="icon" aria-hidden="true">📈</span>
-          <h3>Dashboard &amp; báo cáo real-time</h3>
-          <p>Doanh thu, chi phí, dòng tiền, công nợ — cập nhật tức thời, truy cập trên điện thoại bất kỳ lúc nào. Gửi chứng từ qua Zalo hoặc email, AI nhập liệu tự động.</p>
+          <h3 data-i18n="svc6-h3">Dashboard &amp; báo cáo real-time</h3>
+          <p data-i18n="svc6-p">Doanh thu, chi phí, dòng tiền, công nợ — cập nhật tức thời, truy cập trên điện thoại bất kỳ lúc nào. Gửi chứng từ qua Zalo hoặc email, AI nhập liệu tự động.</p>
         </div>
 
       </div>
@@ -510,66 +542,66 @@
 
   <section id="layers">
     <div class="container">
-      <h2>Ba tầng — một giải pháp hoàn chỉnh</h2>
-      <p class="subtitle">Engine là nền móng, Advisory là lớp phán đoán, Platform là giao diện bạn nhìn thấy mỗi ngày</p>
+      <h2 data-i18n="layers-h2">Ba tầng — một giải pháp hoàn chỉnh</h2>
+      <p class="subtitle" data-i18n="layers-sub">Engine là nền móng, Advisory là lớp phán đoán, Platform là giao diện bạn nhìn thấy mỗi ngày</p>
       <div class="layers-stack">
 
         <div class="layer-card layer-platform">
-          <span class="layer-label">Tầng 3 · Client-Facing</span>
+          <span class="layer-label" data-i18n="layer3-label">Tầng 3 · Client-Facing</span>
           <div class="layer-card-header">
             <span class="layer-icon" aria-hidden="true">📱</span>
             <div>
               <h3>Tech Platform</h3>
-              <p class="layer-tagline">Những gì bạn nhìn thấy và tương tác mỗi ngày</p>
+              <p class="layer-tagline" data-i18n="layer3-tagline">Những gì bạn nhìn thấy và tương tác mỗi ngày</p>
             </div>
           </div>
           <ul class="layer-features">
-            <li class="layer-feat">Dashboard doanh thu, chi phí, dòng tiền real-time</li>
-            <li class="layer-feat">Truy cập mobile — xem số liệu mọi lúc mọi nơi</li>
-            <li class="layer-feat">Nhận chứng từ qua Zalo &amp; email, AI nhập liệu tự động</li>
-            <li class="layer-feat">Báo cáo tùy chỉnh xuất PDF / Excel</li>
+            <li class="layer-feat" data-i18n="layer3-feat1">Dashboard doanh thu, chi phí, dòng tiền real-time</li>
+            <li class="layer-feat" data-i18n="layer3-feat2">Truy cập mobile — xem số liệu mọi lúc mọi nơi</li>
+            <li class="layer-feat" data-i18n="layer3-feat3">Nhận chứng từ qua Zalo &amp; email, AI nhập liệu tự động</li>
+            <li class="layer-feat" data-i18n="layer3-feat4">Báo cáo tùy chỉnh xuất PDF / Excel</li>
           </ul>
         </div>
 
         <div class="layer-connector" aria-hidden="true">
-          <span class="layer-connector-label">được hỗ trợ bởi</span>
+          <span class="layer-connector-label" data-i18n="connector">được hỗ trợ bởi</span>
         </div>
 
         <div class="layer-card layer-advisory">
-          <span class="layer-label">Tầng 2 · Human Judgment</span>
+          <span class="layer-label" data-i18n="layer2-label">Tầng 2 · Human Judgment</span>
           <div class="layer-card-header">
             <span class="layer-icon" aria-hidden="true">👨‍💼</span>
             <div>
               <h3>Advisory Layer</h3>
-              <p class="layer-tagline">AI lo phần thô — chuyên gia lo phần phán đoán</p>
+              <p class="layer-tagline" data-i18n="layer2-tagline">AI lo phần thô — chuyên gia lo phần phán đoán</p>
             </div>
           </div>
           <ul class="layer-features">
-            <li class="layer-feat">Kế toán 30+ năm kinh nghiệm review mọi hồ sơ</li>
-            <li class="layer-feat">Phát hiện rủi ro thuế trước khi cơ quan thuế phát hiện</li>
-            <li class="layer-feat">Tranh biện, giải trình trực tiếp với cơ quan thuế</li>
-            <li class="layer-feat">Check-in định kỳ và review quyết toán hàng quý</li>
+            <li class="layer-feat" data-i18n="layer2-feat1">Kế toán 30+ năm kinh nghiệm review mọi hồ sơ</li>
+            <li class="layer-feat" data-i18n="layer2-feat2">Phát hiện rủi ro thuế trước khi cơ quan thuế phát hiện</li>
+            <li class="layer-feat" data-i18n="layer2-feat3">Tranh biện, giải trình trực tiếp với cơ quan thuế</li>
+            <li class="layer-feat" data-i18n="layer2-feat4">Check-in định kỳ và review quyết toán hàng quý</li>
           </ul>
         </div>
 
         <div class="layer-connector" aria-hidden="true">
-          <span class="layer-connector-label">được hỗ trợ bởi</span>
+          <span class="layer-connector-label" data-i18n="connector">được hỗ trợ bởi</span>
         </div>
 
         <div class="layer-card layer-engine">
-          <span class="layer-label">Tầng 1 · Foundation</span>
+          <span class="layer-label" data-i18n="layer1-label">Tầng 1 · Foundation</span>
           <div class="layer-card-header">
             <span class="layer-icon" aria-hidden="true">⚙️</span>
             <div>
               <h3>Compliance Engine</h3>
-              <p class="layer-tagline">Nền móng không bao giờ trễ hạn, không bao giờ bỏ sót</p>
+              <p class="layer-tagline" data-i18n="layer1-tagline">Nền móng không bao giờ trễ hạn, không bao giờ bỏ sót</p>
             </div>
           </div>
           <ul class="layer-features">
-            <li class="layer-feat">MISA-powered — tự động hạch toán và kê khai</li>
-            <li class="layer-feat">PDPL-compliant — hóa đơn điện tử theo Nghị định 123</li>
-            <li class="layer-feat">Tuân thủ đầy đủ TT 133 / TT 200 / TT 88</li>
-            <li class="layer-feat">Phát hiện lỗi tự động, bút toán kết chuyển cuối kỳ</li>
+            <li class="layer-feat" data-i18n="layer1-feat1">MISA-powered — tự động hạch toán và kê khai</li>
+            <li class="layer-feat" data-i18n="layer1-feat2">PDPL-compliant — hóa đơn điện tử theo Nghị định 123</li>
+            <li class="layer-feat" data-i18n="layer1-feat3">Tuân thủ đầy đủ TT 133 / TT 200 / TT 88</li>
+            <li class="layer-feat" data-i18n="layer1-feat4">Phát hiện lỗi tự động, bút toán kết chuyển cuối kỳ</li>
           </ul>
         </div>
 
@@ -579,29 +611,29 @@
 
   <section id="how" style="background:#f0f7f7;">
     <div class="container">
-      <h2>Cách chúng tôi làm việc</h2>
-      <p class="subtitle">Online, đơn giản, minh bạch</p>
+      <h2 data-i18n="how-h2">Cách chúng tôi làm việc</h2>
+      <p class="subtitle" data-i18n="how-sub">Online, đơn giản, minh bạch</p>
       <div class="steps">
 
         <div class="step">
           <div class="num" aria-hidden="true">01</div>
-          <h4>Đăng ký</h4>
-          <p>Bạn điền thông tin cơ bản — chúng tôi soạn hợp đồng và hướng dẫn các bước tiếp theo trong vòng 24h.</p>
+          <h4 data-i18n="step1-h4">Đăng ký</h4>
+          <p data-i18n="step1-p">Bạn điền thông tin cơ bản — chúng tôi soạn hợp đồng và hướng dẫn các bước tiếp theo trong vòng 24h.</p>
         </div>
         <div class="step">
           <div class="num" aria-hidden="true">02</div>
-          <h4>Nhận chứng từ</h4>
-          <p>Bạn gửi hóa đơn, hợp đồng, sao kê ngân hàng qua email hoặc Zalo. AI tự động trích xuất và phân loại.</p>
+          <h4 data-i18n="step2-h4">Nhận chứng từ</h4>
+          <p data-i18n="step2-p">Bạn gửi hóa đơn, hợp đồng, sao kê ngân hàng qua email hoặc Zalo. AI tự động trích xuất và phân loại.</p>
         </div>
         <div class="step">
           <div class="num" aria-hidden="true">03</div>
-          <h4>Xử lý &amp; báo cáo</h4>
-          <p>Đội ngũ kế toán kiểm tra, hạch toán. Bạn theo dõi số liệu qua dashboard online mọi lúc.</p>
+          <h4 data-i18n="step3-h4">Xử lý &amp; báo cáo</h4>
+          <p data-i18n="step3-p">Đội ngũ kế toán kiểm tra, hạch toán. Bạn theo dõi số liệu qua dashboard online mọi lúc.</p>
         </div>
         <div class="step">
           <div class="num" aria-hidden="true">04</div>
-          <h4>Kê khai &amp; nộp</h4>
-          <p>Tự động lập tờ khai, nộp thuế đúng hạn. Bạn nhận thông báo qua Zalo hoặc email mỗi kỳ.</p>
+          <h4 data-i18n="step4-h4">Kê khai &amp; nộp</h4>
+          <p data-i18n="step4-p">Tự động lập tờ khai, nộp thuế đúng hạn. Bạn nhận thông báo qua Zalo hoặc email mỗi kỳ.</p>
         </div>
 
       </div>
@@ -610,53 +642,53 @@
 
   <section id="pricing">
     <div class="container">
-      <h2>Bảng giá</h2>
-      <p class="subtitle">Phù hợp với mọi quy mô doanh nghiệp</p>
+      <h2 data-i18n="pricing-h2">Bảng giá</h2>
+      <p class="subtitle" data-i18n="pricing-sub">Phù hợp với mọi quy mô doanh nghiệp</p>
       <div class="pricing-grid">
 
         <div class="plan">
-          <h3>Hộ Kinh Doanh</h3>
+          <h3 data-i18n="plan1-h3">Hộ Kinh Doanh</h3>
           <div class="price">200K</div>
-          <div class="period">đồng / tháng</div>
+          <div class="period" data-i18n="plan-period">đồng / tháng</div>
           <ul>
-            <li>Sổ sách đơn giản (TT 88)</li>
-            <li>Kê khai thuế GTGT</li>
-            <li>Hóa đơn bán lẻ</li>
-            <li>Báo cáo thuế cuối năm</li>
-            <li>Hỗ trợ qua Zalo</li>
+            <li data-i18n="plan1-li1">Sổ sách đơn giản (TT 88)</li>
+            <li data-i18n="plan1-li2">Kê khai thuế GTGT</li>
+            <li data-i18n="plan1-li3">Hóa đơn bán lẻ</li>
+            <li data-i18n="plan1-li4">Báo cáo thuế cuối năm</li>
+            <li data-i18n="plan1-li5">Hỗ trợ qua Zalo</li>
           </ul>
-          <a href="#contact" class="plan-cta">Đăng ký</a>
+          <a href="#contact" class="plan-cta" data-i18n="plan-cta">Đăng ký</a>
         </div>
 
         <div class="plan featured">
-          <span class="badge">Phổ biến nhất</span>
-          <h3>Doanh Nghiệp Nhỏ</h3>
+          <span class="badge" data-i18n="plan2-badge">Phổ biến nhất</span>
+          <h3 data-i18n="plan2-h3">Doanh Nghiệp Nhỏ</h3>
           <div class="price">500K</div>
-          <div class="period">đồng / tháng</div>
+          <div class="period" data-i18n="plan-period">đồng / tháng</div>
           <ul>
-            <li>Đầy đủ sổ sách (TT 133)</li>
-            <li>Kê khai GTGT, TNCN, TNDN</li>
-            <li>Hóa đơn điện tử</li>
-            <li>Dashboard online</li>
-            <li>Báo cáo quản trị hàng tháng</li>
-            <li>Kết nối MISA</li>
+            <li data-i18n="plan2-li1">Đầy đủ sổ sách (TT 133)</li>
+            <li data-i18n="plan2-li2">Kê khai GTGT, TNCN, TNDN</li>
+            <li data-i18n="plan2-li3">Hóa đơn điện tử</li>
+            <li data-i18n="plan2-li4">Dashboard online</li>
+            <li data-i18n="plan2-li5">Báo cáo quản trị hàng tháng</li>
+            <li data-i18n="plan2-li6">Kết nối MISA</li>
           </ul>
-          <a href="#contact" class="plan-cta">Đăng ký</a>
+          <a href="#contact" class="plan-cta" data-i18n="plan-cta">Đăng ký</a>
         </div>
 
         <div class="plan">
-          <h3>Doanh Nghiệp Vừa</h3>
+          <h3 data-i18n="plan3-h3">Doanh Nghiệp Vừa</h3>
           <div class="price">1.000K</div>
-          <div class="period">đồng / tháng</div>
+          <div class="period" data-i18n="plan-period">đồng / tháng</div>
           <ul>
-            <li>Đầy đủ sổ sách &amp; báo cáo (TT 200)</li>
-            <li>Kê khai &amp; quyết toán thuế</li>
-            <li>Hóa đơn điện tử (không giới hạn)</li>
-            <li>Dashboard &amp; báo cáo tùy chỉnh</li>
-            <li>Tư vấn thuế định kỳ</li>
-            <li>Kết nối ngân hàng tự động</li>
+            <li data-i18n="plan3-li1">Đầy đủ sổ sách &amp; báo cáo (TT 200)</li>
+            <li data-i18n="plan3-li2">Kê khai &amp; quyết toán thuế</li>
+            <li data-i18n="plan3-li3">Hóa đơn điện tử (không giới hạn)</li>
+            <li data-i18n="plan3-li4">Dashboard &amp; báo cáo tùy chỉnh</li>
+            <li data-i18n="plan3-li5">Tư vấn thuế định kỳ</li>
+            <li data-i18n="plan3-li6">Kết nối ngân hàng tự động</li>
           </ul>
-          <a href="#contact" class="plan-cta">Đăng ký</a>
+          <a href="#contact" class="plan-cta" data-i18n="plan-cta">Đăng ký</a>
         </div>
 
       </div>
@@ -665,29 +697,29 @@
 
   <section id="why" style="background:#f0f7f7;">
     <div class="container">
-      <h2>Tại sao ba tầng thay vì một?</h2>
-      <p class="subtitle">Mỗi tầng giải quyết vấn đề mà tầng kia không thể làm một mình</p>
+      <h2 data-i18n="why-h2">Tại sao ba tầng thay vì một?</h2>
+      <p class="subtitle" data-i18n="why-sub">Mỗi tầng giải quyết vấn đề mà tầng kia không thể làm một mình</p>
       <div class="why-grid">
 
         <div class="why-item">
           <span class="icon" aria-hidden="true">⚙️</span>
-          <h4>Engine không bỏ sót deadline</h4>
-          <p>Tự động kê khai và nộp thuế đúng hạn 100%. Không phụ thuộc vào trí nhớ của người — máy móc không nghỉ lễ, không quên.</p>
+          <h4 data-i18n="why1-h4">Engine không bỏ sót deadline</h4>
+          <p data-i18n="why1-p">Tự động kê khai và nộp thuế đúng hạn 100%. Không phụ thuộc vào trí nhớ của người — máy móc không nghỉ lễ, không quên.</p>
         </div>
         <div class="why-item">
           <span class="icon" aria-hidden="true">👨‍💼</span>
-          <h4>Advisory giải quyết tình huống thực</h4>
-          <p>Thanh tra thuế, tranh chấp, quyết toán cuối năm — phần mềm không thể thay thế chuyên gia 30 năm đã xử lý hàng trăm tình huống tương tự.</p>
+          <h4 data-i18n="why2-h4">Advisory giải quyết tình huống thực</h4>
+          <p data-i18n="why2-p">Thanh tra thuế, tranh chấp, quyết toán cuối năm — phần mềm không thể thay thế chuyên gia 30 năm đã xử lý hàng trăm tình huống tương tự.</p>
         </div>
         <div class="why-item">
           <span class="icon" aria-hidden="true">📱</span>
-          <h4>Platform cho bạn thấy số thật</h4>
-          <p>Không cần gọi điện hỏi kế toán. Doanh thu, chi phí, dòng tiền luôn hiển thị real-time — bạn ra quyết định dựa trên số liệu, không phải cảm tính.</p>
+          <h4 data-i18n="why3-h4">Platform cho bạn thấy số thật</h4>
+          <p data-i18n="why3-p">Không cần gọi điện hỏi kế toán. Doanh thu, chi phí, dòng tiền luôn hiển thị real-time — bạn ra quyết định dựa trên số liệu, không phải cảm tính.</p>
         </div>
         <div class="why-item">
           <span class="icon" aria-hidden="true">🔒</span>
-          <h4>Bảo mật chuẩn PDPL</h4>
-          <p>Dữ liệu tài chính được bảo vệ theo Luật Bảo vệ Dữ liệu Cá nhân. Ba tầng, một cam kết bảo mật tuyệt đối.</p>
+          <h4 data-i18n="why4-h4">Bảo mật chuẩn PDPL</h4>
+          <p data-i18n="why4-p">Dữ liệu tài chính được bảo vệ theo Luật Bảo vệ Dữ liệu Cá nhân. Ba tầng, một cam kết bảo mật tuyệt đối.</p>
         </div>
 
       </div>
@@ -696,34 +728,34 @@
 
   <section id="testimonials">
     <div class="container">
-      <h2>Khách hàng nói gì</h2>
-      <p class="subtitle">Hơn 200 doanh nghiệp đang tin dùng dịch vụ của chúng tôi</p>
+      <h2 data-i18n="test-h2">Khách hàng nói gì</h2>
+      <p class="subtitle" data-i18n="test-sub">Hơn 200 doanh nghiệp đang tin dùng dịch vụ của chúng tôi</p>
       <div class="testimonials-grid">
 
         <div class="testimonial">
-          <div class="stars" aria-label="5 sao">★★★★★</div>
-          <blockquote>Trước đây thuê kế toán nội bộ tốn 8 triệu/tháng. Chuyển sang Viet Kế Thuế chỉ 500K mà báo cáo còn chi tiết hơn, lại không lo nhân viên nghỉ đột xuất.</blockquote>
+          <div class="stars" aria-label="5 sao" data-i18n-aria="stars-aria">★★★★★</div>
+          <blockquote data-i18n="test1-quote">Trước đây thuê kế toán nội bộ tốn 8 triệu/tháng. Chuyển sang Viet Kế Thuế chỉ 500K mà báo cáo còn chi tiết hơn, lại không lo nhân viên nghỉ đột xuất.</blockquote>
           <div class="author">
-            <strong>Nguyễn Minh T.</strong>
-            <span>CEO, Công ty TNHH Đông Phương</span>
+            <strong data-i18n="test1-author">Nguyễn Minh T.</strong>
+            <span data-i18n="test1-role">CEO, Công ty TNHH Đông Phương</span>
           </div>
         </div>
 
         <div class="testimonial">
-          <div class="stars" aria-label="5 sao">★★★★★</div>
-          <blockquote>Kê khai thuế đúng hạn 100%, không một lần bị phạt chậm. Nhân viên tư vấn nhiệt tình, giải thích rõ ràng từng khoản thuế.</blockquote>
+          <div class="stars" aria-label="5 sao" data-i18n-aria="stars-aria">★★★★★</div>
+          <blockquote data-i18n="test2-quote">Kê khai thuế đúng hạn 100%, không một lần bị phạt chậm. Nhân viên tư vấn nhiệt tình, giải thích rõ ràng từng khoản thuế.</blockquote>
           <div class="author">
-            <strong>Trần Thị H.</strong>
-            <span>Giám đốc, Công ty CP Minh Phúc</span>
+            <strong data-i18n="test2-author">Trần Thị H.</strong>
+            <span data-i18n="test2-role">Giám đốc, Công ty CP Minh Phúc</span>
           </div>
         </div>
 
         <div class="testimonial">
-          <div class="stars" aria-label="5 sao">★★★★★</div>
-          <blockquote>Gửi hóa đơn qua Zalo là có kết quả sau 24h. Dashboard online tiện lợi, xem được số liệu bất cứ lúc nào ngay trên điện thoại.</blockquote>
+          <div class="stars" aria-label="5 sao" data-i18n-aria="stars-aria">★★★★★</div>
+          <blockquote data-i18n="test3-quote">Gửi hóa đơn qua Zalo là có kết quả sau 24h. Dashboard online tiện lợi, xem được số liệu bất cứ lúc nào ngay trên điện thoại.</blockquote>
           <div class="author">
-            <strong>Lê Văn K.</strong>
-            <span>Chủ hộ kinh doanh, TP.HCM</span>
+            <strong data-i18n="test3-author">Lê Văn K.</strong>
+            <span data-i18n="test3-role">Chủ hộ kinh doanh, TP.HCM</span>
           </div>
         </div>
 
@@ -733,45 +765,47 @@
 
   <section class="contact" id="contact">
     <div class="container">
-      <h2>Liên hệ ngay</h2>
-      <p class="subtitle">Để lại thông tin — chúng tôi sẽ gọi lại trong 24h</p>
+      <h2 data-i18n="contact-h2">Liên hệ ngay</h2>
+      <p class="subtitle" data-i18n="contact-sub">Để lại thông tin — chúng tôi sẽ gọi lại trong 24h</p>
       <div class="contact-grid">
         <div>
           <div class="contact-info">
-            <p><strong>📞 Điện thoại:</strong> [Số điện thoại]</p>
-            <p><strong>📧 Email:</strong> info@vietkethue.com</p>
-            <p><strong>💬 Zalo:</strong> [Zalo ID]</p>
-            <p><strong>🏢 Địa chỉ:</strong> [Địa chỉ văn phòng]</p>
-            <p class="note">
-              Bạn có thể gửi chứng từ qua email hoặc Zalo bất kỳ lúc nào.
-              Chúng tôi xử lý trong vòng 24h làm việc.
-            </p>
+            <p><strong data-i18n="contact-phone">📞 Điện thoại:</strong> [Số điện thoại]</p>
+            <p><strong data-i18n="contact-email">📧 Email:</strong> info@vietkethue.com</p>
+            <p><strong data-i18n="contact-zalo">💬 Zalo:</strong> [Zalo ID]</p>
+            <p><strong data-i18n="contact-addr">🏢 Địa chỉ:</strong> [Địa chỉ văn phòng]</p>
+            <p class="note" data-i18n="contact-note">Bạn có thể gửi chứng từ qua email hoặc Zalo bất kỳ lúc nào. Chúng tôi xử lý trong vòng 24h làm việc.</p>
           </div>
         </div>
         <div>
           <form class="contact-form" id="contact-form" novalidate>
             <div class="form-field">
-              <label for="f-name">Họ tên <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="f-name" name="name" placeholder="Nguyễn Văn A" required autocomplete="name">
+              <label for="f-name"><span data-i18n="label-name">Họ tên</span> <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="f-name" name="name" required autocomplete="name"
+                data-i18n-ph="ph-name" placeholder="Nguyễn Văn A">
             </div>
             <div class="form-field">
-              <label for="f-phone">Số điện thoại <span class="req" aria-hidden="true">*</span></label>
-              <input type="tel" id="f-phone" name="phone" placeholder="0901 234 567" required autocomplete="tel" pattern="[0-9\s\+\-]{9,15}">
+              <label for="f-phone"><span data-i18n="label-phone">Số điện thoại</span> <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="f-phone" name="phone" required autocomplete="tel" pattern="[0-9\s\+\-]{9,15}"
+                data-i18n-ph="ph-phone" placeholder="0901 234 567">
             </div>
             <div class="form-field">
-              <label for="f-email">Email</label>
-              <input type="email" id="f-email" name="email" placeholder="ten@congty.com" autocomplete="email">
+              <label for="f-email" data-i18n="label-email">Email</label>
+              <input type="email" id="f-email" name="email" autocomplete="email"
+                data-i18n-ph="ph-email" placeholder="ten@congty.com">
             </div>
             <div class="form-field">
-              <label for="f-company">Tên công ty</label>
-              <input type="text" id="f-company" name="company" placeholder="Công ty TNHH ABC" autocomplete="organization">
+              <label for="f-company" data-i18n="label-company">Tên công ty</label>
+              <input type="text" id="f-company" name="company" autocomplete="organization"
+                data-i18n-ph="ph-company" placeholder="Công ty TNHH ABC">
             </div>
             <div class="form-field">
-              <label for="f-message">Nội dung</label>
-              <textarea id="f-message" name="message" rows="3" placeholder="Dịch vụ bạn cần, quy mô doanh nghiệp..."></textarea>
+              <label for="f-message" data-i18n="label-message">Nội dung</label>
+              <textarea id="f-message" name="message" rows="3"
+                data-i18n-ph="ph-message" placeholder="Dịch vụ bạn cần, quy mô doanh nghiệp..."></textarea>
             </div>
-            <button type="submit">Gửi yêu cầu</button>
-            <div id="form-success" class="form-success" role="alert" aria-live="polite">✅ Cảm ơn bạn! Chúng tôi sẽ liên hệ trong 24h.</div>
+            <button type="submit" data-i18n="btn-submit">Gửi yêu cầu</button>
+            <div id="form-success" class="form-success" role="alert" aria-live="polite" data-i18n="form-success">✅ Cảm ơn bạn! Chúng tôi sẽ liên hệ trong 24h.</div>
           </form>
         </div>
       </div>
@@ -780,45 +814,367 @@
 
   <footer>
     <div class="container">
-      <p>Viet Kế Thuế &copy; 2026 — Dịch vụ kế toán &amp; thuế cho doanh nghiệp SME</p>
-      <p class="muted">Số ĐKKD: [MST] | Chịu trách nhiệm: [Tên] — [SĐT]</p>
+      <p data-i18n="footer-copy">Viet Kế Thuế &copy; 2026 — Dịch vụ kế toán &amp; thuế cho doanh nghiệp SME</p>
+      <p class="muted" data-i18n="footer-muted">Số ĐKKD: [MST] | Chịu trách nhiệm: [Tên] — [SĐT]</p>
     </div>
   </footer>
 
   <script>
-    // Mobile nav toggle with aria state and icon swap
+    var STRINGS = {
+      vi: {
+        'skip-link': 'Bỏ qua điều hướng',
+        'nav-aria': 'Điều hướng chính',
+        'logo-aria': 'Viet Kế Thuế — Trang chủ',
+        'nav-toggle-open': 'Mở menu điều hướng',
+        'nav-toggle-close': 'Đóng menu điều hướng',
+        'nav-services': 'Dịch vụ',
+        'nav-layers': 'Ba Tầng',
+        'nav-pricing': 'Bảng giá',
+        'nav-why': 'Tại sao',
+        'nav-contact': 'Liên hệ',
+        'hero-h1': 'Không chỉ là kế toán — Compliance Engine, Advisory Layer và Tech Platform trong một',
+        'hero-p': 'Viet Kế Thuế bảo vệ doanh nghiệp trên ba tầng: máy móc tự động không bỏ sót deadline, chuyên gia 30 năm xử lý phán đoán, và dashboard để bạn nhìn thấy số liệu real-time — không cần gọi hỏi.',
+        'hero-stat-1': 'Doanh nghiệp tin dùng',
+        'hero-stat-2': 'Năm kinh nghiệm kế toán',
+        'hero-stat-3': 'Kê khai đúng hạn',
+        'hero-badge-1': '⚙️ Compliance Engine · MISA + TT 133/200/88',
+        'hero-badge-2': '👨‍💼 Advisory Layer · Kế toán 30+ năm',
+        'hero-badge-3': '📱 Tech Platform · Dashboard real-time',
+        'hero-cta': 'Đăng ký tư vấn miễn phí',
+        'hero-secondary': 'Xem ba tầng hoạt động thế nào',
+        'stats-aria': 'Số liệu nổi bật',
+        'badges-aria': 'Ba tầng nền tảng',
+        'services-h2': 'Dịch vụ trên ba tầng nền tảng',
+        'services-sub': 'Mỗi nghiệp vụ được phân công đúng tầng — máy làm phần máy, người làm phần người',
+        'svc1-h3': 'Ghi sổ tự động',
+        'svc1-p': 'MISA xử lý toàn bộ hạch toán: chứng từ mua vào — bán ra, tính giá vốn, khấu hao TSCĐ, bút toán kết chuyển cuối kỳ. Tự động phát hiện sai lệch trước khi ký sổ.',
+        'svc2-h3': 'Kê khai & nộp thuế',
+        'svc2-p': 'Tờ khai GTGT, TNCN, TNDN, thuế môn bài được lập và nộp tự động qua cổng điện tử. Tuân thủ đầy đủ TT 133, TT 200, TT 88 — không trễ một ngày, không bị phạt một đồng.',
+        'svc3-h3': 'Hóa đơn điện tử',
+        'svc3-p': 'Phát hành hóa đơn GTGT theo Nghị định 123, kết nối trực tiếp với TCT, tự động truyền mã xác thực. PDPL-compliant — dữ liệu được bảo vệ theo đúng luật.',
+        'svc4-h3': 'Tư vấn & rà soát thuế',
+        'svc4-p': 'Kế toán 30+ năm kinh nghiệm review mọi hồ sơ trước khi nộp. Phát hiện rủi ro thuế, giải đáp vướng mắc, soạn thảo hợp đồng và hỗ trợ quyết toán cuối năm.',
+        'svc5-h3': 'Đại diện & tranh biện thuế',
+        'svc5-p': 'Làm việc trực tiếp với cơ quan thuế thay mặt doanh nghiệp — giải trình, thanh tra, hoàn thuế, xử lý tranh chấp. AI lo phần thủ tục, chuyên gia lo phần phán đoán.',
+        'svc6-h3': 'Dashboard & báo cáo real-time',
+        'svc6-p': 'Doanh thu, chi phí, dòng tiền, công nợ — cập nhật tức thời, truy cập trên điện thoại bất kỳ lúc nào. Gửi chứng từ qua Zalo hoặc email, AI nhập liệu tự động.',
+        'layers-h2': 'Ba tầng — một giải pháp hoàn chỉnh',
+        'layers-sub': 'Engine là nền móng, Advisory là lớp phán đoán, Platform là giao diện bạn nhìn thấy mỗi ngày',
+        'layer3-label': 'Tầng 3 · Client-Facing',
+        'layer3-tagline': 'Những gì bạn nhìn thấy và tương tác mỗi ngày',
+        'layer3-feat1': 'Dashboard doanh thu, chi phí, dòng tiền real-time',
+        'layer3-feat2': 'Truy cập mobile — xem số liệu mọi lúc mọi nơi',
+        'layer3-feat3': 'Nhận chứng từ qua Zalo & email, AI nhập liệu tự động',
+        'layer3-feat4': 'Báo cáo tùy chỉnh xuất PDF / Excel',
+        'connector': 'được hỗ trợ bởi',
+        'layer2-label': 'Tầng 2 · Human Judgment',
+        'layer2-tagline': 'AI lo phần thô — chuyên gia lo phần phán đoán',
+        'layer2-feat1': 'Kế toán 30+ năm kinh nghiệm review mọi hồ sơ',
+        'layer2-feat2': 'Phát hiện rủi ro thuế trước khi cơ quan thuế phát hiện',
+        'layer2-feat3': 'Tranh biện, giải trình trực tiếp với cơ quan thuế',
+        'layer2-feat4': 'Check-in định kỳ và review quyết toán hàng quý',
+        'layer1-label': 'Tầng 1 · Foundation',
+        'layer1-tagline': 'Nền móng không bao giờ trễ hạn, không bao giờ bỏ sót',
+        'layer1-feat1': 'MISA-powered — tự động hạch toán và kê khai',
+        'layer1-feat2': 'PDPL-compliant — hóa đơn điện tử theo Nghị định 123',
+        'layer1-feat3': 'Tuân thủ đầy đủ TT 133 / TT 200 / TT 88',
+        'layer1-feat4': 'Phát hiện lỗi tự động, bút toán kết chuyển cuối kỳ',
+        'how-h2': 'Cách chúng tôi làm việc',
+        'how-sub': 'Online, đơn giản, minh bạch',
+        'step1-h4': 'Đăng ký',
+        'step1-p': 'Bạn điền thông tin cơ bản — chúng tôi soạn hợp đồng và hướng dẫn các bước tiếp theo trong vòng 24h.',
+        'step2-h4': 'Nhận chứng từ',
+        'step2-p': 'Bạn gửi hóa đơn, hợp đồng, sao kê ngân hàng qua email hoặc Zalo. AI tự động trích xuất và phân loại.',
+        'step3-h4': 'Xử lý & báo cáo',
+        'step3-p': 'Đội ngũ kế toán kiểm tra, hạch toán. Bạn theo dõi số liệu qua dashboard online mọi lúc.',
+        'step4-h4': 'Kê khai & nộp',
+        'step4-p': 'Tự động lập tờ khai, nộp thuế đúng hạn. Bạn nhận thông báo qua Zalo hoặc email mỗi kỳ.',
+        'pricing-h2': 'Bảng giá',
+        'pricing-sub': 'Phù hợp với mọi quy mô doanh nghiệp',
+        'plan1-h3': 'Hộ Kinh Doanh',
+        'plan-period': 'đồng / tháng',
+        'plan1-li1': 'Sổ sách đơn giản (TT 88)',
+        'plan1-li2': 'Kê khai thuế GTGT',
+        'plan1-li3': 'Hóa đơn bán lẻ',
+        'plan1-li4': 'Báo cáo thuế cuối năm',
+        'plan1-li5': 'Hỗ trợ qua Zalo',
+        'plan-cta': 'Đăng ký',
+        'plan2-badge': 'Phổ biến nhất',
+        'plan2-h3': 'Doanh Nghiệp Nhỏ',
+        'plan2-li1': 'Đầy đủ sổ sách (TT 133)',
+        'plan2-li2': 'Kê khai GTGT, TNCN, TNDN',
+        'plan2-li3': 'Hóa đơn điện tử',
+        'plan2-li4': 'Dashboard online',
+        'plan2-li5': 'Báo cáo quản trị hàng tháng',
+        'plan2-li6': 'Kết nối MISA',
+        'plan3-h3': 'Doanh Nghiệp Vừa',
+        'plan3-li1': 'Đầy đủ sổ sách & báo cáo (TT 200)',
+        'plan3-li2': 'Kê khai & quyết toán thuế',
+        'plan3-li3': 'Hóa đơn điện tử (không giới hạn)',
+        'plan3-li4': 'Dashboard & báo cáo tùy chỉnh',
+        'plan3-li5': 'Tư vấn thuế định kỳ',
+        'plan3-li6': 'Kết nối ngân hàng tự động',
+        'why-h2': 'Tại sao ba tầng thay vì một?',
+        'why-sub': 'Mỗi tầng giải quyết vấn đề mà tầng kia không thể làm một mình',
+        'why1-h4': 'Engine không bỏ sót deadline',
+        'why1-p': 'Tự động kê khai và nộp thuế đúng hạn 100%. Không phụ thuộc vào trí nhớ của người — máy móc không nghỉ lễ, không quên.',
+        'why2-h4': 'Advisory giải quyết tình huống thực',
+        'why2-p': 'Thanh tra thuế, tranh chấp, quyết toán cuối năm — phần mềm không thể thay thế chuyên gia 30 năm đã xử lý hàng trăm tình huống tương tự.',
+        'why3-h4': 'Platform cho bạn thấy số thật',
+        'why3-p': 'Không cần gọi điện hỏi kế toán. Doanh thu, chi phí, dòng tiền luôn hiển thị real-time — bạn ra quyết định dựa trên số liệu, không phải cảm tính.',
+        'why4-h4': 'Bảo mật chuẩn PDPL',
+        'why4-p': 'Dữ liệu tài chính được bảo vệ theo Luật Bảo vệ Dữ liệu Cá nhân. Ba tầng, một cam kết bảo mật tuyệt đối.',
+        'test-h2': 'Khách hàng nói gì',
+        'test-sub': 'Hơn 200 doanh nghiệp đang tin dùng dịch vụ của chúng tôi',
+        'stars-aria': '5 sao',
+        'test1-quote': 'Trước đây thuê kế toán nội bộ tốn 8 triệu/tháng. Chuyển sang Viet Kế Thuế chỉ 500K mà báo cáo còn chi tiết hơn, lại không lo nhân viên nghỉ đột xuất.',
+        'test1-author': 'Nguyễn Minh T.',
+        'test1-role': 'CEO, Công ty TNHH Đông Phương',
+        'test2-quote': 'Kê khai thuế đúng hạn 100%, không một lần bị phạt chậm. Nhân viên tư vấn nhiệt tình, giải thích rõ ràng từng khoản thuế.',
+        'test2-author': 'Trần Thị H.',
+        'test2-role': 'Giám đốc, Công ty CP Minh Phúc',
+        'test3-quote': 'Gửi hóa đơn qua Zalo là có kết quả sau 24h. Dashboard online tiện lợi, xem được số liệu bất cứ lúc nào ngay trên điện thoại.',
+        'test3-author': 'Lê Văn K.',
+        'test3-role': 'Chủ hộ kinh doanh, TP.HCM',
+        'contact-h2': 'Liên hệ ngay',
+        'contact-sub': 'Để lại thông tin — chúng tôi sẽ gọi lại trong 24h',
+        'contact-phone': '📞 Điện thoại:',
+        'contact-email': '📧 Email:',
+        'contact-zalo': '💬 Zalo:',
+        'contact-addr': '🏢 Địa chỉ:',
+        'contact-note': 'Bạn có thể gửi chứng từ qua email hoặc Zalo bất kỳ lúc nào. Chúng tôi xử lý trong vòng 24h làm việc.',
+        'label-name': 'Họ tên',
+        'label-phone': 'Số điện thoại',
+        'label-email': 'Email',
+        'label-company': 'Tên công ty',
+        'label-message': 'Nội dung',
+        'ph-name': 'Nguyễn Văn A',
+        'ph-phone': '0901 234 567',
+        'ph-email': 'ten@congty.com',
+        'ph-company': 'Công ty TNHH ABC',
+        'ph-message': 'Dịch vụ bạn cần, quy mô doanh nghiệp...',
+        'btn-submit': 'Gửi yêu cầu',
+        'btn-sending': 'Đang gửi...',
+        'form-success': '✅ Cảm ơn bạn! Chúng tôi sẽ liên hệ trong 24h.',
+        'footer-copy': 'Viet Kế Thuế © 2026 — Dịch vụ kế toán & thuế cho doanh nghiệp SME',
+        'footer-muted': 'Số ĐKKD: [MST] | Chịu trách nhiệm: [Tên] — [SĐT]'
+      },
+      en: {
+        'skip-link': 'Skip to main content',
+        'nav-aria': 'Main navigation',
+        'logo-aria': 'Viet Kế Thuế — Home',
+        'nav-toggle-open': 'Open navigation menu',
+        'nav-toggle-close': 'Close navigation menu',
+        'nav-services': 'Services',
+        'nav-layers': 'Three Layers',
+        'nav-pricing': 'Pricing',
+        'nav-why': 'Why Us',
+        'nav-contact': 'Contact',
+        'hero-h1': 'More than accounting — Compliance Engine, Advisory Layer, and Tech Platform in one',
+        'hero-p': 'Viet Kế Thuế protects your business across three layers: automated systems that never miss a deadline, 30-year veteran advisors for judgment calls, and a real-time dashboard so you always see the numbers — no need to call and ask.',
+        'hero-stat-1': 'Businesses served',
+        'hero-stat-2': 'Years of accounting experience',
+        'hero-stat-3': 'On-time filings',
+        'hero-badge-1': '⚙️ Compliance Engine · MISA + Decree 133/200/88',
+        'hero-badge-2': '👨‍💼 Advisory Layer · 30+ year accountants',
+        'hero-badge-3': '📱 Tech Platform · Real-time dashboard',
+        'hero-cta': 'Book a free consultation',
+        'hero-secondary': 'See how the three layers work',
+        'stats-aria': 'Key statistics',
+        'badges-aria': 'Three foundational layers',
+        'services-h2': 'Services across three foundational layers',
+        'services-sub': 'Each task assigned to the right layer — machines handle the mechanical, people handle the judgment',
+        'svc1-h3': 'Automated bookkeeping',
+        'svc1-p': 'MISA handles all accounting entries: purchase and sales documents, cost of goods, fixed asset depreciation, and period-end closing entries. Automatically detects discrepancies before sign-off.',
+        'svc2-h3': 'Tax filing & payment',
+        'svc2-p': 'VAT, PIT, CIT, and business license tax declarations are prepared and submitted automatically through the e-portal. Fully compliant with Decree 133, 200, 88 — never a day late, never a penny in penalties.',
+        'svc3-h3': 'E-invoicing',
+        'svc3-p': 'VAT invoice issuance under Decree 123, direct connection with the General Department of Taxation, automatic authentication code transmission. PDPL-compliant — data protected under law.',
+        'svc4-h3': 'Tax advisory & review',
+        'svc4-p': 'Accountants with 30+ years review every dossier before submission. Identify tax risks, resolve queries, draft contracts, and support year-end settlement.',
+        'svc5-h3': 'Tax representation & dispute',
+        'svc5-p': 'Work directly with tax authorities on behalf of your business — explanations, audits, refunds, dispute resolution. AI handles the paperwork, experts handle the judgment.',
+        'svc6-h3': 'Real-time dashboard & reports',
+        'svc6-p': 'Revenue, expenses, cash flow, receivables — updated instantly, accessible on your phone anytime. Send documents via Zalo or email, AI auto-enters the data.',
+        'layers-h2': 'Three layers — one complete solution',
+        'layers-sub': 'Engine is the foundation, Advisory is the judgment layer, Platform is the interface you see every day',
+        'layer3-label': 'Layer 3 · Client-Facing',
+        'layer3-tagline': 'What you see and interact with every day',
+        'layer3-feat1': 'Real-time revenue, expense, and cash flow dashboard',
+        'layer3-feat2': 'Mobile access — view data anywhere, anytime',
+        'layer3-feat3': 'Receive documents via Zalo & email, AI auto-entry',
+        'layer3-feat4': 'Custom reports exportable as PDF / Excel',
+        'connector': 'powered by',
+        'layer2-label': 'Layer 2 · Human Judgment',
+        'layer2-tagline': 'AI handles the rough work — experts handle the judgment',
+        'layer2-feat1': '30+ year accountants review every dossier',
+        'layer2-feat2': 'Identify tax risks before the tax authority does',
+        'layer2-feat3': 'Dispute resolution and direct dealings with tax authorities',
+        'layer2-feat4': 'Regular check-ins and quarterly settlement reviews',
+        'layer1-label': 'Layer 1 · Foundation',
+        'layer1-tagline': 'A foundation that never misses a deadline, never misses a beat',
+        'layer1-feat1': 'MISA-powered — automated accounting and filing',
+        'layer1-feat2': 'PDPL-compliant — e-invoicing under Decree 123',
+        'layer1-feat3': 'Fully compliant with Decree 133 / 200 / 88',
+        'layer1-feat4': 'Automatic error detection, period-end closing entries',
+        'how-h2': 'How we work',
+        'how-sub': 'Online, simple, transparent',
+        'step1-h4': 'Sign up',
+        'step1-p': 'You fill in basic information — we prepare the contract and guide you through the next steps within 24 hours.',
+        'step2-h4': 'Send documents',
+        'step2-p': 'Send invoices, contracts, bank statements via email or Zalo. AI automatically extracts and categorizes them.',
+        'step3-h4': 'Process & report',
+        'step3-p': 'Our accounting team verifies and posts entries. You track the numbers through the online dashboard anytime.',
+        'step4-h4': 'File & pay',
+        'step4-p': 'Automatically prepare declarations and pay taxes on time. You receive notifications via Zalo or email each period.',
+        'pricing-h2': 'Pricing',
+        'pricing-sub': 'Suitable for businesses of every size',
+        'plan1-h3': 'Sole Trader',
+        'plan-period': 'VND / month',
+        'plan1-li1': 'Simple bookkeeping (Decree 88)',
+        'plan1-li2': 'VAT tax filing',
+        'plan1-li3': 'Retail invoices',
+        'plan1-li4': 'Year-end tax report',
+        'plan1-li5': 'Zalo support',
+        'plan-cta': 'Sign up',
+        'plan2-badge': 'Most popular',
+        'plan2-h3': 'Small Business',
+        'plan2-li1': 'Full bookkeeping (Decree 133)',
+        'plan2-li2': 'VAT, PIT, CIT filing',
+        'plan2-li3': 'E-invoicing',
+        'plan2-li4': 'Online dashboard',
+        'plan2-li5': 'Monthly management reports',
+        'plan2-li6': 'MISA integration',
+        'plan3-h3': 'Medium Business',
+        'plan3-li1': 'Full bookkeeping & reports (Decree 200)',
+        'plan3-li2': 'Tax filing & settlement',
+        'plan3-li3': 'E-invoicing (unlimited)',
+        'plan3-li4': 'Dashboard & custom reports',
+        'plan3-li5': 'Regular tax advisory',
+        'plan3-li6': 'Automatic bank connection',
+        'why-h2': 'Why three layers instead of one?',
+        'why-sub': 'Each layer solves problems the others cannot handle alone',
+        'why1-h4': 'Engine never misses a deadline',
+        'why1-p': '100% on-time filing and tax payment. No reliance on human memory — machines don\'t take holidays, don\'t forget.',
+        'why2-h4': 'Advisory handles real-world situations',
+        'why2-p': 'Tax audits, disputes, year-end settlements — software cannot replace a 30-year veteran who has handled hundreds of similar situations.',
+        'why3-h4': 'Platform shows you real numbers',
+        'why3-p': 'No need to call the accountant. Revenue, expenses, and cash flow always displayed in real-time — make decisions based on data, not guesswork.',
+        'why4-h4': 'PDPL-grade security',
+        'why4-p': 'Financial data protected under the Personal Data Protection Law. Three layers, one absolute commitment to security.',
+        'test-h2': 'What our clients say',
+        'test-sub': 'Over 200 businesses trust our services',
+        'stars-aria': '5 stars',
+        'test1-quote': 'We used to spend 8 million/month on an in-house accountant. Switching to Viet Kế Thuế costs only 500K and the reports are even more detailed — and we don\'t worry about staff calling in sick.',
+        'test1-author': 'Nguyen Minh T.',
+        'test1-role': 'CEO, Dong Phuong Co. Ltd',
+        'test2-quote': '100% on-time tax filings, not a single late penalty. The advisory staff are enthusiastic and explain each tax item clearly.',
+        'test2-author': 'Tran Thi H.',
+        'test2-role': 'Director, Minh Phuc Joint Stock Co.',
+        'test3-quote': 'Send an invoice via Zalo and get results within 24 hours. The online dashboard is convenient — check the numbers anytime right on my phone.',
+        'test3-author': 'Le Van K.',
+        'test3-role': 'Sole trader, Ho Chi Minh City',
+        'contact-h2': 'Get in touch',
+        'contact-sub': 'Leave your details — we\'ll call back within 24 hours',
+        'contact-phone': '📞 Phone:',
+        'contact-email': '📧 Email:',
+        'contact-zalo': '💬 Zalo:',
+        'contact-addr': '🏢 Address:',
+        'contact-note': 'You can send documents via email or Zalo at any time. We process them within 24 business hours.',
+        'label-name': 'Full name',
+        'label-phone': 'Phone number',
+        'label-email': 'Email',
+        'label-company': 'Company name',
+        'label-message': 'Message',
+        'ph-name': 'Nguyen Van A',
+        'ph-phone': '0901 234 567',
+        'ph-email': 'name@company.com',
+        'ph-company': 'ABC Co. Ltd',
+        'ph-message': 'Services you need, business size...',
+        'btn-submit': 'Send request',
+        'btn-sending': 'Sending...',
+        'form-success': '✅ Thank you! We\'ll be in touch within 24 hours.',
+        'footer-copy': 'Viet Kế Thuế © 2026 — Accounting & tax services for SME businesses',
+        'footer-muted': 'Business Reg. No: [Tax ID] | Responsible: [Name] — [Phone]'
+      }
+    };
+
+    var currentLang = 'vi';
     var navToggle = document.querySelector('.nav-toggle');
     var navMenu = document.getElementById('nav-menu');
+
+    function applyLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'en' ? 'en' : 'vi';
+      localStorage.setItem('lang', lang);
+
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        var active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (STRINGS[lang][key] !== undefined) el.textContent = STRINGS[lang][key];
+      });
+
+      document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-ph');
+        if (STRINGS[lang][key] !== undefined) el.placeholder = STRINGS[lang][key];
+      });
+
+      document.querySelectorAll('[data-i18n-aria]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-aria');
+        if (STRINGS[lang][key] !== undefined) el.setAttribute('aria-label', STRINGS[lang][key]);
+      });
+
+      var isOpen = navMenu.classList.contains('open');
+      navToggle.setAttribute('aria-label', STRINGS[lang][isOpen ? 'nav-toggle-close' : 'nav-toggle-open']);
+    }
+
+    function detectLang() {
+      var stored = localStorage.getItem('lang');
+      if (stored === 'vi' || stored === 'en') return stored;
+      var nav = (navigator.language || '').toLowerCase();
+      return nav.startsWith('en') ? 'en' : 'vi';
+    }
+
+    applyLang(detectLang());
+
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        applyLang(btn.getAttribute('data-lang'));
+      });
+    });
 
     navToggle.addEventListener('click', function() {
       var isOpen = navMenu.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', String(isOpen));
-      navToggle.setAttribute('aria-label', isOpen ? 'Đóng menu điều hướng' : 'Mở menu điều hướng');
+      navToggle.setAttribute('aria-label', STRINGS[currentLang][isOpen ? 'nav-toggle-close' : 'nav-toggle-open']);
       navToggle.textContent = isOpen ? '✕' : '☰';
     });
 
-    // Close mobile nav on link click
     navMenu.querySelectorAll('a').forEach(function(link) {
       link.addEventListener('click', function() {
         navMenu.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-label', 'Mở menu điều hướng');
+        navToggle.setAttribute('aria-label', STRINGS[currentLang]['nav-toggle-open']);
         navToggle.textContent = '☰';
       });
     });
 
-    // Contact form submission
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       var form = this;
       var btn = form.querySelector('button[type="submit"]');
       var success = document.getElementById('form-success');
-      btn.textContent = 'Đang gửi...';
+      btn.textContent = STRINGS[currentLang]['btn-sending'];
       btn.disabled = true;
       setTimeout(function() {
         form.reset();
+        applyLang(currentLang);
         success.style.display = 'block';
-        btn.textContent = 'Gửi yêu cầu';
         btn.disabled = false;
         btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 800);
