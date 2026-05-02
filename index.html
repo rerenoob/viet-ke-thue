@@ -1136,8 +1136,7 @@
     function detectLang() {
       var stored = localStorage.getItem('lang');
       if (stored === 'vi' || stored === 'en') return stored;
-      var nav = (navigator.language || '').toLowerCase();
-      return nav.startsWith('en') ? 'en' : 'vi';
+      return 'vi';
     }
 
     applyLang(detectLang());
