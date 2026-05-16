@@ -82,39 +82,20 @@ nav ul a:hover{color:#0d6e6e;text-decoration:none}
 .price-card.popular .price-cta:hover{background:#095a5a;text-decoration:none}
 .price-offer{text-align:center;margin-top:28px;padding:18px 24px;background:#f0f7f7;border-radius:10px;font-size:.88rem;color:#555;border:1px solid #b0d4d4}
 .price-offer strong{color:#0d6e6e}
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.team-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:26px;text-align:center}
-.team-avatar{width:64px;height:64px;border-radius:50%;background:#e0f0f0;display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin:0 auto 14px}
-.team-card h3{font-size:1rem;font-weight:700;margin-bottom:3px}
-.team-role{font-size:.8rem;color:#0d6e6e;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px}
-.team-card p{font-size:.86rem;color:#666;line-height:1.6}
-.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;max-width:800px;margin:0 auto}
+.contact-info{text-align:center;max-width:480px;margin:0 auto}
 .contact-info h3{font-size:1.05rem;font-weight:700;margin-bottom:10px}
 .contact-info p{color:#666;font-size:.88rem;margin-bottom:22px;line-height:1.7}
-.contact-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:10px;font-weight:700;font-size:.92rem;margin-bottom:10px;transition:background .2s}
-.btn-zalo{background:#0068ff;color:#fff}
-.btn-zalo:hover{background:#0058d6;text-decoration:none;color:#fff}
+.contact-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 28px;border-radius:10px;font-weight:700;font-size:.92rem;transition:background .2s}
 .btn-email{background:#f0f7f7;color:#0d6e6e;border:2px solid #0d6e6e}
 .btn-email:hover{background:#e0f0f0;text-decoration:none}
-.contact-form{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:26px}
-.contact-form h3{font-size:.97rem;font-weight:700;margin-bottom:18px}
-.form-group{margin-bottom:14px}
-.form-group label{display:block;font-size:.83rem;font-weight:600;color:#444;margin-bottom:4px}
-.form-group input,.form-group select,.form-group textarea{width:100%;border:1.5px solid #ddd;border-radius:8px;padding:9px 12px;font-size:.88rem;font-family:inherit;transition:border-color .2s;background:#fff;color:#1a1a2e}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#0d6e6e}
-.form-submit{width:100%;padding:12px;background:#0d6e6e;color:#fff;border:none;border-radius:8px;font-size:.92rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s}
-.form-submit:hover{background:#095a5a}
-.form-note{font-size:.77rem;color:#999;margin-top:8px;text-align:center}
 footer{background:#1a1a2e;color:#888;padding:28px 0;text-align:center;font-size:.83rem}
 footer strong{color:#ddd}
-#toast{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:12px 24px;border-radius:10px;font-size:.9rem;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 @media(max-width:900px){
   .steps{grid-template-columns:1fr 1fr}
-  .services-grid,.pricing-grid,.team-grid{grid-template-columns:1fr 1fr}
+  .services-grid,.pricing-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
-  .steps,.services-grid,.pricing-grid,.team-grid{grid-template-columns:1fr}
-  .contact-wrap{grid-template-columns:1fr}
+  .steps,.services-grid,.pricing-grid{grid-template-columns:1fr}
   nav ul{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #e8e8e8;padding:16px 24px;gap:14px;z-index:99;box-shadow:0 4px 12px rgba(0,0,0,.08)}
   nav ul.open{display:flex}
   .nav-toggle{display:block}
@@ -303,39 +284,10 @@ footer strong{color:#ddd}
         <h2 data-key="ct_h">Liên hệ tư vấn</h2>
         <p data-key="ct_sub">Bắt đầu với cuộc trò chuyện ngắn — không ràng buộc</p>
       </div>
-      <div class="contact-wrap">
-        <div class="contact-info">
-          <h3 data-key="ct_ih">Liên hệ tư vấn qua Zalo</h3>
-          <p data-key="ct_ip">Quét mã QR hoặc nhấn nút bên dưới để nhắn tin qua Zalo. Chúng tôi sẽ trả lời trong vòng 24 giờ.</p>
-          <!-- Thay YOUR_OA_ID bằng ID Zalo OA của Long An Solutions -->
-          <a href="https://zalo.me/YOUR_OA_ID" class="contact-btn btn-zalo" data-key="ct_zalo" onclick="gtag('event', 'click_zalo', {'method': 'button', 'label': 'Contact Zalo'})">💬 Nhắn tin Zalo</a>
-          <a href="mailto:info@longansolutions.com" class="contact-btn btn-email" onclick="gtag('event', 'click_email', {'method': 'button', 'label': 'Contact Email'})">✉️ info@longansolutions.com</a>
-        </div>
-        <div class="contact-form" style="display:none">
-          <h3 data-key="cf_h">Hoặc gửi thông tin liên hệ</h3>
-          <form onsubmit="handleSubmit(event)">
-            <div class="form-group">
-              <label data-key="cf_name">Tên / Tên công ty</label>
-              <input type="text" name="name" placeholder="Công ty TNHH ABC" required>
-            </div>
-            <div class="form-group">
-              <label data-key="cf_phone">Số điện thoại / Zalo</label>
-              <input type="tel" name="phone" placeholder="0901 234 567" required>
-            </div>
-            <div class="form-group">
-              <label data-key="cf_vol">Số hóa đơn mỗi tháng</label>
-              <select name="volume">
-                <option value="" data-key="cf_v0">Chọn...</option>
-                <option value="lt50" data-key="cf_v1">Dưới 50</option>
-                <option value="50-200" data-key="cf_v2">50–200</option>
-                <option value="gt200" data-key="cf_v3">Trên 200</option>
-                <option value="unsure" data-key="cf_v4">Không chắc</option>
-              </select>
-            </div>
-            <button type="submit" class="form-submit" data-key="cf_submit">Gửi thông tin</button>
-            <p class="form-note" data-key="cf_note">Chúng tôi sẽ liên hệ trong 24 giờ. Không spam.</p>
-          </form>
-        </div>
+      <div class="contact-info">
+        <h3 data-key="ct_ih">Liên hệ qua email</h3>
+        <p data-key="ct_ip">Gửi email cho chúng tôi — chúng tôi sẽ trả lời trong vòng 24 giờ.</p>
+        <a href="mailto:info@longansolutions.com" class="contact-btn btn-email" onclick="gtag('event', 'click_email', {'method': 'button', 'label': 'Contact Email'})">✉️ info@longansolutions.com</a>
       </div>
     </div>
   </section>
@@ -346,7 +298,6 @@ footer strong{color:#ddd}
     <p style="margin-top:6px;font-size:.78rem" data-key="ft2">© 2026 · Long An Solutions</p>
   </div>
 </footer>
-<div id="toast"></div>
 <script>
 // HTML defaults are Vietnamese. EN object only needed for translation.
 const EN = {
@@ -374,15 +325,11 @@ const EN = {
   pr_h:"Pricing", pr_sub:"Volume discount — no hidden fees",
   offer_s:"Your first period is on us:", offer_t:" After that, pay only for invoices processed. New HKDs get 5,000₫/invoice rate.",
   ct_h:"Contact", ct_sub:"Free consultation — no obligation",
-  ct_ih:"Contact via Zalo", ct_ip:"Scan QR or click the button below to message us on Zalo. We respond within 24h.",
-  ct_zalo:"💬 Message on Zalo",
+  ct_ih:"Email us", ct_ip:"Send us an email — we respond within 24h.",
+  ct_zalo:"💬 Message on Zalo (coming soon)",
   note_t:"Note:", note_b:"You need a digital signature (USB token or remote signing) to sign the return. LAS calculates and prepares the return — you sign and submit via the e-tax portal. Need one? We help you register (~500K/year).",
-  cf_h:"Or leave your details", cf_name:"Name / Company", cf_phone:"Phone / Zalo", cf_vol:"Invoices per month",
-  cf_v0:"Select...", cf_v1:"Under 50", cf_v2:"50–200", cf_v3:"Over 200", cf_v4:"Not sure",
-  cf_submit:"Submit", cf_note:"We'll follow up within 24h. No spam.",
   ft:"Automated tax support for Vietnamese household businesses",
-  ft2:"© 2026 · Long An Solutions",
-  toast_ok:"✓ Received — we'll be in touch soon!"
+  ft2:"© 2026 · Long An Solutions"
 };
 let lang = localStorage.getItem('vkt_lang') || 'vi';
 const viCache = {};
@@ -408,14 +355,6 @@ function toggleNav() {
   const open = ul.classList.toggle('open');
   btn.setAttribute('aria-expanded', open);
   btn.textContent = open ? '✕' : '☰';
-}
-function handleSubmit(e) {
-  e.preventDefault();
-  const toast = document.getElementById('toast');
-  toast.textContent = lang === 'en' ? EN.toast_ok : '✓ Đã nhận — chúng tôi sẽ liên hệ sớm!';
-  toast.style.cssText = 'display:block;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:12px 24px;border-radius:10px;font-size:.9rem;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,.2)';
-  setTimeout(() => { toast.style.display = 'none'; }, 4000);
-  e.target.reset();
 }
 document.addEventListener('click', e => {
   if (!e.target.closest('nav')) document.getElementById('nav-links').classList.remove('open');
