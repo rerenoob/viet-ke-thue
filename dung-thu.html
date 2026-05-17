@@ -27,7 +27,7 @@
     .section{padding:48px 0}
     .steps{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
     .step{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:22px;text-align:center}
-    .step .icon{font-size:2rem;margin-bottom:8px}
+    .step .icon{font-size:1.6rem;font-weight:800;color:#0d6e6e;margin-bottom:8px}
     .step h3{font-size:.95rem;font-weight:700;margin-bottom:4px;color:#1a1a2e}
     .step p{font-size:.85rem;color:#666;margin:0}
 
@@ -48,7 +48,7 @@
     .proof-items{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:20px}
     .proof-item{text-align:center}
     .proof-item .icon{font-size:1.8rem}
-    .proof-item p{font-size:.88rem;color:#555;margin-top:4px}
+    .proof-item .proof-label{font-size:.88rem;color:#555;padding:6px 14px;background:#f0f7f7;border-radius:20px;font-weight:600;border:1px solid #e0eaea}
 
     .testimonial{background:#fff;border:1px solid #e0eaea;border-radius:12px;padding:28px 32px;margin:32px 0;border-left:4px solid #0d6e6e;text-align:left}
     .testimonial p{font-size:.92rem;color:#444;line-height:1.8;margin-bottom:12px}
@@ -89,7 +89,7 @@
 <body>
 <div class="hero">
   <div class="container">
-    <div class="badge">📲 Kỳ thuế đầu tiên miễn phí</div>
+    <div class="badge">Kỳ thuế đầu tiên miễn phí</div>
     <h1>Khai thuế bằng AI — chỉ cần Zalo</h1>
     <p>Gửi hóa đơn qua Zalo. AI tự động trích xuất, tính GTGT.<br>Kế toán trưởng 30 năm kiểm tra. Bạn chỉ ký số và nộp.</p>
   </div>
@@ -99,22 +99,22 @@
   <div class="container">
     <div class="steps">
       <div class="step">
-        <div class="icon">📷</div>
+        <div class="icon">01</div>
         <h3>Gửi hóa đơn qua Zalo</h3>
         <p>Chụp ảnh hoặc forward file. Không cần app, không cần đăng nhập.</p>
       </div>
       <div class="step">
-        <div class="icon">🤖</div>
+        <div class="icon">02</div>
         <h3>AI xử lý tự động</h3>
         <p>Trích xuất dữ liệu, phân loại đầu ra/đầu vào, tính thuế suất.</p>
       </div>
       <div class="step">
-        <div class="icon">👩‍💼</div>
+        <div class="icon">03</div>
         <h3>Kế toán trưởng kiểm tra</h3>
         <p>Rà soát từng hóa đơn trước khi gửi bạn ký.</p>
       </div>
       <div class="step">
-        <div class="icon">✍️</div>
+        <div class="icon">04</div>
         <h3>Ký số &amp; nộp</h3>
         <p>Ký trên điện thoại — không cần máy tính. Mất 2 phút.</p>
       </div>
@@ -163,8 +163,8 @@
       </form>
 
       <div id="thank-you" style="display:none;text-align:center;padding:20px 0">
-        <div style="font-size:3rem;margin-bottom:12px">✅</div>
-        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:6px">Đã nhận thông tin!</h3>
+        <div style="font-size:3rem;margin-bottom:12px;color:#0d6e6e;font-weight:200">✓</div>
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:6px">Đã nhận thông tin</h3>
         <p style="color:#666;font-size:.9rem">Đội ngũ LAS sẽ gọi hoặc nhắn Zalo cho bạn trong vòng 24 giờ để hướng dẫn các bước tiếp theo.</p>
       </div>
     </div>
@@ -180,16 +180,13 @@
         <p>Chỉ cần điện thoại</p>
       </div>
       <div class="proof-item">
-        <div class="icon">💬</div>
-        <p>Gửi qua Zalo</p>
+        <span class="proof-label">Gửi qua Zalo</span>
       </div>
       <div class="proof-item">
-        <div class="icon">⚡</div>
-        <p>AI trích xuất tự động</p>
+        <span class="proof-label">AI trích xuất tự động</span>
       </div>
       <div class="proof-item">
-        <div class="icon">✅</div>
-        <p>Kế toán trưởng kiểm tra</p>
+        <span class="proof-label">Kế toán trưởng kiểm tra</span>
       </div>
     </div>
   </div>
@@ -200,7 +197,7 @@
     <div class="testimonial">
       <p>"Gửi hóa đơn qua Zalo, AI tự động trích xuất và tính thuế — tiết kiệm 80% thời gian so với làm thủ công. Đội ngũ kế toán kiểm tra kỹ trước khi trình ký, rất yên tâm."</p>
       <div class="attribution">
-        <div class="avatar">🏢</div>
+        <div class="avatar">LT</div>
         <div>
           <div class="name">Kế toán trưởng — CVT Vận tải Bắc Nam</div>
           <div class="role">Hơn 1.700 hóa đơn đã xử lý qua LAS</div>
