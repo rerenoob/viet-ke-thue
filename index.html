@@ -44,8 +44,9 @@
     .hero{background:linear-gradient(135deg,rgba(244,250,251,.95) 0,rgba(232,245,245,.95) 40%,rgba(244,250,251,.95) 100%),url('hero-bg.jpg') center/cover fixed;padding:80px 0 64px;border-bottom:1px solid #e0eaea;text-align:center;position:relative;overflow:hidden}
     .hero-inner{display:flex;align-items:center;gap:48px}
     .hero-text{flex:1;text-align:center}
-    .hero-visual{display:none}
-    @media(min-width:860px){.hero-text{text-align:left}.hero-visual{display:block;flex:0 0 380px}.hero-visual img{width:100%;height:auto;border-radius:16px}}
+    .hero-visual{display:block;margin-bottom:24px}
+    .hero-visual img{width:100%;height:auto;border-radius:12px;max-height:280px;object-fit:contain}
+    @media(min-width:860px){.hero-text{text-align:left}.hero-visual{flex:0 0 380px;margin-bottom:0}.hero-visual img{max-height:none;object-fit:initial;border-radius:16px}}
     .hero::before{content:"";position:absolute;top:-80px;right:-120px;width:400px;height:400px;background:radial-gradient(circle,rgba(13,110,110,.06) 0,transparent 70%);pointer-events:none;border-radius:50%}
     .hero::after{content:"";position:absolute;bottom:-100px;left:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(13,110,110,.04) 0,transparent 70%);pointer-events:none;border-radius:50%}
     .hero-badge{display:inline-block;background:rgba(13,110,110,.1);color:#0d6e6e;font-size:.82rem;font-weight:700;padding:6px 16px;border-radius:20px;margin-bottom:20px;border:1px solid rgba(13,110,110,.2);backdrop-filter:blur(2px)}
@@ -410,8 +411,8 @@
         <h2 data-key="wu_h">Tại sao chọn chúng tôi?</h2>
         <p data-key="wu_sub">Không học phần mềm — chỉ cần gửi hóa đơn qua Zalo, AI trích xuất, chuyên gia thuế kiểm tra trước khi nộp</p>
       </div>
-      <div style="max-width:700px;margin:0 auto 32px;text-align:center">
-        <img src="comparison-infographic.jpg" alt="So sánh LAS với tự làm và dịch vụ truyền thống" loading="lazy" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)">
+      <div style="max-width:100%;margin:0 auto 32px;text-align:center;overflow:hidden;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)">
+        <img src="comparison-infographic.jpg" alt="So sánh LAS với tự làm và dịch vụ truyền thống" loading="lazy" style="width:100%;height:auto;display:block">
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
         <div class="fade-in" style="background:#fff;border:2px solid #e8e8e8;border-radius:12px;padding:28px 22px;text-align:center">
