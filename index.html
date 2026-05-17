@@ -41,7 +41,11 @@
     .nav-toggle:hover{background:#f0f0f0}
 
     /* ── Hero ── */
-    .hero{background:linear-gradient(135deg,#f4fafb 0,#e8f5f5 40%,#f4fafb 100%);padding:80px 0 64px;border-bottom:1px solid #e0eaea;text-align:center;position:relative;overflow:hidden}
+    .hero{background:linear-gradient(135deg,rgba(244,250,251,.95) 0,rgba(232,245,245,.95) 40%,rgba(244,250,251,.95) 100%),url('hero-bg.jpg') center/cover fixed;padding:80px 0 64px;border-bottom:1px solid #e0eaea;text-align:center;position:relative;overflow:hidden}
+    .hero-inner{display:flex;align-items:center;gap:48px}
+    .hero-text{flex:1;text-align:center}
+    .hero-visual{display:none}
+    @media(min-width:860px){.hero-text{text-align:left}.hero-visual{display:block;flex:0 0 380px}.hero-visual img{width:100%;height:auto;border-radius:16px}}
     .hero::before{content:"";position:absolute;top:-80px;right:-120px;width:400px;height:400px;background:radial-gradient(circle,rgba(13,110,110,.06) 0,transparent 70%);pointer-events:none;border-radius:50%}
     .hero::after{content:"";position:absolute;bottom:-100px;left:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(13,110,110,.04) 0,transparent 70%);pointer-events:none;border-radius:50%}
     .hero-badge{display:inline-block;background:rgba(13,110,110,.1);color:#0d6e6e;font-size:.82rem;font-weight:700;padding:6px 16px;border-radius:20px;margin-bottom:20px;border:1px solid rgba(13,110,110,.2);backdrop-filter:blur(2px)}
@@ -198,19 +202,24 @@
 <main id="main">
   <!-- ─── HERO ─── -->
   <section class="hero">
-    <div class="container">
-      <div class="hero-badge" data-key="badge">Kỳ thuế đầu tiên miễn phí — sau đó 10.000₫/hóa đơn</div>
-      <p class="hero-tagline" data-key="tagline">📲 Không cần cài đặt. Không cần đăng ký. Chỉ cần Zalo.</p>
-      <h1 data-key="h1">Dịch vụ khai thuế <span class="accent">thông minh</span><br>cho hộ kinh doanh và doanh nghiệp nhỏ</h1>
-      <p class="hero-sub" data-key="sub">Gửi hóa đơn qua Zalo — không cần app, không cần email, không cần đăng nhập. AI tự động trích xuất, phân loại, tính GTGT. Kế toán trưởng 30 năm kinh nghiệm kiểm tra trước khi nộp.</p>
-      <div class="hero-ctas">
-        <a href="dung-thu.html" class="btn-primary" data-key="cta1">Miễn phí kỳ đầu — Đăng ký ngay</a>
-        <a href="#how-it-works" class="btn-ghost" data-key="cta2">Xem cách hoạt động</a>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge" data-key="badge">Kỳ thuế đầu tiên miễn phí — sau đó 10.000₫/hóa đơn</div>
+        <p class="hero-tagline" data-key="tagline">📲 Không cần cài đặt. Không cần đăng ký. Chỉ cần Zalo.</p>
+        <h1 data-key="h1">Dịch vụ khai thuế <span class="accent">thông minh</span><br>cho hộ kinh doanh và doanh nghiệp nhỏ</h1>
+        <p class="hero-sub" data-key="sub">Gửi hóa đơn qua Zalo — không cần app, không cần email, không cần đăng nhập. AI tự động trích xuất, phân loại, tính GTGT. Kế toán trưởng 30 năm kinh nghiệm kiểm tra trước khi nộp.</p>
+        <div class="hero-ctas">
+          <a href="dung-thu.html" class="btn-primary" data-key="cta1">Miễn phí kỳ đầu — Đăng ký ngay</a>
+          <a href="#how-it-works" class="btn-ghost" data-key="cta2">Xem cách hoạt động</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong data-key="s1l_strong">Kỳ đầu</strong><span data-key="s1l_span"> miễn phí</span></div>
+          <div class="stat"><strong>10.000₫</strong><span data-key="s3l">/hóa đơn (tiêu chuẩn)</span></div>
+          <div class="stat"><strong>Zalo</strong><span data-key="s4l">gửi hóa đơn — không cần app</span></div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><strong data-key="s1l_strong">Kỳ đầu</strong><span data-key="s1l_span"> miễn phí</span></div>
-        <div class="stat"><strong>10.000₫</strong><span data-key="s3l">/hóa đơn (tiêu chuẩn)</span></div>
-        <div class="stat"><strong>Zalo</strong><span data-key="s4l">gửi hóa đơn — không cần app</span></div>
+      <div class="hero-visual">
+        <img src="hero-illustration.jpg" alt="Long An Solutions" loading="lazy">
       </div>
     </div>
   </section>
